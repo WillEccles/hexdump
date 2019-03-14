@@ -43,7 +43,7 @@ int main(int argc, char **argv) {
 	}
 
 	if (!exists(srcfile)) {
-		fprintf(stderr, "Error: file not found: %s\n", srcfile);
+		perror("Error");
 		return 1;
 	}
 
@@ -54,7 +54,7 @@ int main(int argc, char **argv) {
 
 	FILE *infile = fopen(srcfile, "rb");
 	if (!infile) {
-		fprintf(stderr, "Error: could not open file for reading: %s\n", srcfile);
+		perror("Failed to open file");
 		return 1;
 	}
 
@@ -68,7 +68,7 @@ int main(int argc, char **argv) {
 	if (destfile) {
 		outfile = fopen(destfile, "wb");
 		if (!outfile) {
-			fprintf(stderr, "Error: coult not open file for writing: %s\n", destfile);
+			perror("Failed to open file");
 			fclose(infile);
 			return 1;
 		}
@@ -131,7 +131,7 @@ int main(int argc, char **argv) {
 		free(buffer);
 
 	if (ferror(infile)) {
-		fprintf(stderr, "Error reading from file: %s\n", srcfile);
+		perror("File read failed");
 		fclose(infile);
 		if (destfile)
 			fclose(outfile);
@@ -139,7 +139,7 @@ int main(int argc, char **argv) {
 	}
 
 	if (destfile && ferror(outfile)) {
-		fprintf(stderr, "Error writing to file: %s\n", destfile);
+		perror("File write failed");
 		fclose(infile);
 		fclose(outfile);
 		return 1;
