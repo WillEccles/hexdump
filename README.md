@@ -1,11 +1,13 @@
-# hexdump
+# hexdumper
 A simple command-line utility used to dump files to hex.
+
+If you have the actual `hexdump` command in your system, you should probably use that instead of this, but this is an interesting project.
 
 # Building
 Use `make`.
 
 # Usage
-`hexdump <sourcefile> [destfile] [maxbuffer]`
+`hexdumper <sourcefile> [destfile] [maxbuffer]`
 
 - `sourcefile` is the file to be dump. This is required.
 - `destfile` is the file to store the hex result in. This is optional (stdout will be used if not specified).
