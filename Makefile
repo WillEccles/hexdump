@@ -1,6 +1,6 @@
 CFLAGS=-O3
-OUTPUT=hexdump
-SRC=hexdump.c
+OUTPUT=hexdumper
+SRC=hexdumper.c
 
 all: $(OUTPUT)
 
